@@ -1,19 +1,13 @@
-# importing AES
 from Crypto.Cipher import AES
-# encryption key
-key = b'C&F)H@McQf9TjWnZr'
-# create new instance of cipher
+from secrets import token_bytes
+key = token_bytes(16)
 cipher = AES.new(key, AES.MODE_EAX)
-# data to be encrypted
-data = "Welcome to copyassignment.com!".encode()
-# nonce is a random value generated each time we instantiate the cipher using new()
 nonce = cipher.nonce
-# encrypt the data
+msg = str(input("Enter the message : "))
+data = msg.encode()
+#data = "Hello Everyone!!!".encode()
 ciphertext = cipher.encrypt(data)
-# print the encrypted data
-print("Cipher text:", ciphertext)
-# generate new instance with the key and nonce same as encryption cipher
+print("Cipher text is:", ciphertext)
 cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
-# decrypt the data
 plaintext = cipher.decrypt(ciphertext)
-print("Plain text:", plaintext)
+print("Plain text is:", plaintext)
