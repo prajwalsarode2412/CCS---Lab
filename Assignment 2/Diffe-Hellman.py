@@ -40,6 +40,7 @@ if g is None:
     print("No primitive root found for p.")
     exit()
 
+    
 a = random.randint(1, p - 1)
 b = random.randint(1, p - 1)  
 
